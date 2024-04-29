@@ -1,0 +1,390 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+
+
+
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+  <title>CodePen - validar inicio de sesion y registro con jquery</title>
+
+    <link rel="canonical" href="https://codepen.io/HostDimeColombia/pen/XWVQdj">
+  
+  
+  
+  
+<style>
+body {
+  background: url('https://lh5.googleusercontent.com/PTg7EdQDmtObcLGeq-Sv3pezMK0L5I4071oyYxa3Aw=s512-no');
+  color: white;
+  font-family: 'Open Sans';
+}
+
+.container{width: 960px; margin: 0 auto;}
+
+
+
+/*= TABS
+--------------------------------------------------------*/
+
+.flat-design-form{
+  background: #f58020;
+  margin: 130px auto;
+  width: 400px;
+  height: auto;
+  position: relative;
+  font-family: 'Open Sans';
+  -webkit-box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+-moz-box-shadow:    1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+box-shadow:         1px 1px 2px 0px rgba(50, 50, 50, 0.75);
+	
+}
+#login {
+    padding-bottom: 20px;
+}
+
+#register {
+    background: #0DA1FF;
+    padding-bottom: 20px;
+}
+
+#login-tab {
+    background: #f58020;
+}
+
+#register-tab {
+    background: #0DA1FF;
+}
+
+span#login_icon {
+    width: 16px;
+    height: 16px;
+    left: 8px;
+    position: absolute;
+    background: url(https://lh6.googleusercontent.com/-YOVxfqYbXpI/U87Y4QRZALI/AAAAAAAAAG0/UwcV4YJOh8k/s16-no/login.png)no-repeat;
+    display: block;
+}
+
+span#signup_icon {
+    width: 16px;
+    height: 16px;
+    left: 110px;
+    position: absolute;
+    background: url(https://lh6.googleusercontent.com/-YjE8ctfiHlU/U87Y4RlOGrI/AAAAAAAAAG4/mKlLOUFNV5s/w16-h20-no/sign-in.png)no-repeat;
+    display: block;
+}
+
+
+.tabs {
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+  position: relative;
+  display: block;
+  margin-bottom: 6px;
+  
+}
+.tabs li {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tabs a {
+
+  display: block;
+  float: left;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 15px 30px 15px 30px;
+   text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  
+}
+
+
+
+
+
+
+/*= FORMS
+--------------------------------------------------------*/
+
+.form-display {
+  padding: 0 20px;
+  position: relative;
+}
+
+.form-display h1 {
+  font-size: 30px;
+  padding: 10px 0 20px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+form {
+  padding-right: 20px !important;
+}
+
+
+form input[type=text],
+form input[type=password], 
+form input[type=email],
+form input[type=url]{
+  width: 100%;
+  outline: none;
+  height: 40px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+  background: #fff;
+  border: none;
+  color: #545454;
+  
+   font-family: 'Open Sans';
+  font-size: 13px;
+}
+
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+
+
+/*= BUTTON
+--------------------------------------------------------*/
+
+
+.button-login{
+    display: block;
+    background: #0DA1FF;
+    padding: 10px 30px;
+	font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+	font-family: 'Open Sans';
+	color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-bottom: 2px solid #1B78B2;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #1B78B2;
+  box-shadow: inset 0 -2px #1B78B2;
+
+  	-webkit-transition: all 0.6s ease;
+	  -moz-transition: all 0.6s ease;
+	  transition: all 0.6s ease;
+}
+
+.button-login:hover {
+  background: #1B78B2;
+
+}
+
+.button-register{
+    display: block;
+    background: #f58020;
+    padding: 10px 30px;
+	font-size: 14px;
+    text-align: center;
+    border-radius: 5px;
+	font-family: 'Open Sans';
+	color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-bottom: 2px solid #c36518;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #c36518;
+  box-shadow: inset 0 -2px #c36518;
+
+  	-webkit-transition: all 0.6s ease;
+	  -moz-transition: all 0.6s ease;
+	  transition: all 0.6s ease;
+}
+
+.button-register:hover {
+  background: #fb7100;
+
+}
+
+.button-register:active {
+  background: #136899;
+}
+
+
+
+
+/*= PLACEHOLDER
+--------------------------------------------------------*/
+
+
+::-webkit-input-placeholder {
+	font-size: 13px;
+	font-family: 'Open Sans';
+  color: #545454;
+}
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-size: 13px;
+	font-family: 'Open Sans';
+  color: #545454;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-size: 13px;
+	font-family: 'Open Sans';
+  color: #545454;
+}
+:-ms-input-placeholder {
+font-size: 13px;
+	font-family: 'Open Sans';
+  color: #545454;
+}
+
+
+
+/*= VALIDATION
+--------------------------------------------------------*/
+
+.item{position: relative;}
+.item .alert{ float:left; margin:0 0 0 20px; padding:3px 10px; color:#FFF; border-radius:3px 4px 4px 3px; background-color:#ef3030; max-width:170px; white-space:pre; position:absolute; left:-15px; opacity:0; z-index:1; transition:0.15s ease-out; }
+.item .alert::after{ content:''; display:block; height:0; width:0; border-color:transparent #ef3030 transparent transparent; border-style:solid; border-width:11px 7px; position:absolute; top:5px; left: -10px; }
+.item.bad .alert{ left:0; opacity:1; top:5px; left: 343px; font-size: 12px; padding: 10px;}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  
+</head>
+
+<body translate="no">
+  <div class="container">
+        <div class="flat-design-form">
+            <ul class="tabs">
+                <li><a class="active" href="#login" id="login-tab"><span id="login_icon"></span> Login</a></li>
+
+                <li><a href="#register" id="register-tab"><span id="signup_icon"></span> Registrar</a></li>
+            </ul>
+
+            <div class="form-display show" id="login">
+                <h1>Inicio Sesion</h1>
+
+                <form action="" method="post" novalidate="">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="password" placeholder="Password" required="required" type="password">
+                                </div>
+                            </li>
+
+                            <li><input class="button-login" type="submit" value="Entrar"></li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="form-display hide" id="register">
+                <h1>Registro</h1>
+
+                <form action="" method="post" novalidate="">
+                    <fieldset>
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length-range="6" name="name" placeholder="Username" required="required" type="text">
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="item">
+                                    <input data-validate-length="6,8" name="password" placeholder="Password" required="required" type="text">
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="item">
+                                    <input class="email" name="email" placeholder="Email" required="required" type="email">
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="item">
+                                    <label><input name="url" placeholder="Website link" required="required" type="url"></label>
+                                </div>
+                            </li>
+
+                            <li><input class="button-register" id="send" type="submit" value="Registrar"></li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://dropthebit.com/demos/validator/validator.js"></script>
+      <script id="rendered-js">
+// initialize the validator function
+validator.message['date'] = 'not a real date';
+
+// validate a field on "blur" event, a 'select' on 'change' event & a '.reuired' classed multifield on 'keyup':
+$('form').
+on('blur ', 'input[required], input.optional, select.required', validator.checkField).
+on('change', 'select.required', validator.checkField).
+on('keypress', 'input[required][pattern]', validator.keypress);
+
+$('.multi.required').
+on('keyup blur', 'input', function () {
+  validator.checkField.apply($(this).siblings().last()[0]);
+});
+
+// bind the validation to the form submit event
+//$('#send').click('submit');//.prop('disabled', true);
+
+$('form').submit(function (e) {
+  e.preventDefault();
+  var submit = true;
+  // evaluate the form using generic validaing
+  if (!validator.checkAll($(this))) {
+    submit = false;
+  }
+
+  if (submit)
+  this.submit();
+  return false;
+});
+//# sourceURL=pen.js
+    </script>
+
+  
+
+
+
+</body></html>
